@@ -1,4 +1,4 @@
 import { createApp } from 'vue';
-import App from './App_02.vue';
+import App from './App_reactive.vue';
 
 createApp(App).mount('#app');
