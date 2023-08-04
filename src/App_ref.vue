@@ -6,18 +6,18 @@
 </template>
 
 <script>
-import { reactive } from 'vue';
+import { ref } from 'vue';
 
 export default {
 	setup() {
-		let message = reactive({
-			value: 'Hello Vue!',
-		});
+		let message = ref('Hello Vue!');
+
 		const addMessage = () => {
 			message.value = message.value + '!';
 		};
+		console.log('message');
 		console.log('message ', message.value);
-		console.log('message typeof ', typeof message);
+		console.log('message typeof ', typeof message.value);
 		return {
 			message,
 			addMessage,
