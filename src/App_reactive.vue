@@ -1,10 +1,6 @@
 <template>
 	<div>
-<<<<<<< HEAD
 		<p>{{ message }}</p>
-=======
-		<p>{{ message.value }}</p>
->>>>>>> main
 		<button v-on:click="addMessage">add click</button>
 	</div>
 </template>
@@ -20,11 +16,7 @@ export default {
 		const addMessage = () => {
 			message.value = message.value + '!';
 		};
-<<<<<<< HEAD
 		console.log('message ', message.value);
-=======
-		console.log('message ', message);
->>>>>>> main
 		console.log('message typeof ', typeof message);
 		return {
 			message,
