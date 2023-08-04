@@ -18,6 +18,7 @@ export default {
 		console.log('message');
 		console.log('message ', message.value);
 		console.log('message typeof ', typeof message.value);
+
 		return {
 			message,
 			addMessage,
