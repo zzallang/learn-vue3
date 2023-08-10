@@ -29,7 +29,7 @@ export default {
 			console.log('clickSpan');
 			// alert('good');
 		};
-		const clickA = () => {
+		const clickA = e => {
 			alert('어떤 기능?');
 		};
 		return { clickDiv, clickP, clickSpan, clickA };
