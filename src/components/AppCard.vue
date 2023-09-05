@@ -12,8 +12,10 @@
 </template>
 
 <script>
+console.log('AppCard module');
 export default {
 	setup() {
+		console.log('AppCard setup()');
 		return {};
 	},
 };
