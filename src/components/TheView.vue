@@ -1,29 +1,55 @@
 <template>
 	<main>
 		<div class="container py-4">
-			<div class="container text-center">
-				<div class="row g-3">
-					<div v-for="post in posts" :key="post.id" class="col col-4">
-						<AppCard
-							:title="post.title"
-							:contents="post.contents"
-							:type="post.type"
-							:is-like="post.isLike"
-							@toggle-like="post.isLike = !post.isLike"
-						></AppCard>
-					</div>
+			<PostCreate @create-post="createPost"></PostCreate>
+
+			<hr class="my-4" />
+
+			<div class="row g-3">
+				<div v-for="post in posts" :key="post.id" class="col col-4">
+					<AppCard
+						:title="post.title"
+						:contents="post.contents"
+						:type="post.type"
+						:is-like="post.isLike"
+						@toggle-like="post.isLike = !post.isLike"
+					></AppCard>
 				</div>
 			</div>
+
+			<hr class="my-4" />
+			<!-- 
+				modelValue
+				update:modelValue 
+			-->
+
+			<!-- :model-value="username"
+			@update:model-value="value => (username = value)" -->
+			<LabelInput v-model="username" label="이름"></LabelInput>
+			<LabelTitle v-model:title="username" label="제목"></LabelTitle>
+			<username
+				v-model:firstname="firstname"
+				v-model:lastname="lastname"
+			></username>
 		</div>
 	</main>
 </template>
 
 <script>
 import AppCard from '@/components/AppCard.vue';
-import { reactive } from 'vue';
+import PostCreate from '@/components/PostCreate.vue';
+import LabelInput from '@/components/LabelInput.vue';
+import LabelTitle from '@/components/LabelTitle.vue';
+import username from '@/components/username.vue';
+import { reactive, ref } from 'vue';
+
 export default {
 	components: {
 		AppCard,
+		PostCreate,
+		LabelInput,
+		LabelTitle,
+		username,
 	},
 	setup() {
 		const obj = reactive({
@@ -50,7 +76,17 @@ export default {
 				type: 'notice',
 			},
 		]);
-		return { obj, posts };
+
+		const createPost = newPost => {
+			console.log('newTitle ', newPost);
+			posts.push(newPost);
+		};
+
+		const username = ref('');
+		const firstname = ref('');
+		const lastname = ref('');
+
+		return { obj, posts, createPost, username, firstname, lastname };
 	},
 };
 </script>
